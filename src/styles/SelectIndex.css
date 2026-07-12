@@ -1,0 +1,281 @@
+@font-face {
+  font-family: 'NotoSansTC';
+  font-style: normal;
+  src: url('../assets/fonts/NotoSansTC-VariableFont_wght.ttf');
+  unicode-range: U+4E00-9FFF;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NotoSansTC';
+  font-style: normal;
+  src: url('../assets/fonts/Geist-VariableFont_wght.ttf');
+  unicode-range: U+00-024F;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  font-style: normal;
+  src: url('../assets/fonts/DMSans-VariableFont_opsz,wght.ttf');
+  font-display: swap;
+}
+
+/* 全域文藝灰底配色 */
+.select-index-container {
+  background-color: #dbdbdb;
+  min-height: 100vh;
+  padding: 2rem 3rem 8rem 3rem;
+  font-family: "NotoSansTC";
+  position: relative;
+  overflow-y: auto !important;
+}
+
+/* 頂部小字導覽 */
+.editorial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  color: #000;
+}
+
+.header-intro {
+  margin: 0;
+  font-weight: 400;
+}
+
+.header-about {
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* 巨無霸標題區 */
+.brand-hero {
+  margin: 2.5rem 0 1.5rem 0;
+}
+
+.giant-title {
+  font-size: 13.5vw; /* 隨視窗縮放的巨型字體 */
+  font-weight: 900;
+  letter-spacing: -0.4rem;
+  line-height: 0.85;
+  margin: 0;
+  color: #000;
+  text-transform: uppercase;
+  font-family: "DMSans";
+}
+
+/* 狀態橫條 */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 0.6rem 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+/* 核心列表樣式（強烈線條感） */
+.editorial-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+}
+
+.image-preview-box {
+  display: none;
+}
+
+.list-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1rem 0;
+  border-bottom: 1px solid #000;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.list-row:hover {
+  background-color: rgba(0, 0, 0, 1); /* 輕微的懸停反饋 */
+  color: #dbdbdb;
+}
+
+/* 左側文字細節 */
+.text-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.floating-preview-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 150px; /* 維持你原本沉穩的微長方寬幅比例 */
+  background-color: #ddd;
+  overflow: hidden;
+  z-index: 9999; /* 確保浮在所有人上面，但低於你的特殊控制島 */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* 🎯 核心防禦：滑鼠事件完全穿透圖片，避免網頁鬼畜閃爍 */
+  pointer-events: none; 
+  /* 讓圖片出現時帶有一點點優雅的淡入感 */
+  animation: floatImageFadeIn 0.2s ease-out forwards;
+  will-change: transform; /* 優化瀏覽器渲染性能 */
+}
+
+.floating-preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+}
+
+/* 淡入小動畫 */
+@keyframes floatImageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.item-info {
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+
+.item-title {
+  font-family: "NotoSansTC";
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* 讀取狀態 */
+.loading-state {
+  text-align: center;
+  padding: 4rem 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+/* 底部黑色浮動控制島 */
+.floating-island {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000000;
+  color: #ffffff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.island-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* 四個小正方形組成的 Grid 圖標 */
+.island-icon {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+}
+
+.island-icon span {
+  width: 4px;
+  height: 4px;
+  background-color: #fff;
+  display: block;
+}
+
+/* 🔴 偵錯區塊專用樣式 */
+.debug-error-box {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin: 2rem 0;
+  font-family: monospace;
+}
+
+.debug-error-box code {
+  display: block;
+  background: #fff;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid #eed3d7;
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 1rem;
+    color: #000;
+}
+
+html.hide-scrollbar,
+html.hide-scrollbar body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html.hide-scrollbar::-webkit-scrollbar,
+html.hide-scrollbar body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* 響應式斷點 */
+@media (max-width: 768px) {
+  .floating-preview-box {
+    display: none !important;
+  }
+
+  /* 2. 🎯 核心：復活原本手機版右側的內聯圖片樣式 */
+  .image-preview-box {
+    display: block; /* 讓圖片方塊重新在 flex 佈局中現身 */
+    width: 120px;   /* 還原你原本設定的手機端寬度 */
+    height: 80px;   /* 還原你原本設定的手機端高度 */
+    background-color: #ddd;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .image-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%);
+  }
+
+  .select-index-container {
+    padding: 1.5rem 1.5rem 6rem 1.5rem;
+  }
+  .item-title {
+    font-size: 1.6rem;
+  }
+  .image-preview-box {
+    width: 120px;
+    height: 80px;
+  }
+}
