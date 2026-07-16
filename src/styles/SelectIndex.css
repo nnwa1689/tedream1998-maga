@@ -61,7 +61,7 @@
 .giant-title {
   font-size: 13.5vw; /* 隨視窗縮放的巨型字體 */
   font-weight: 900;
-  letter-spacing: -0.4rem;
+  letter-spacing: 0rem;
   line-height: 0.85;
   margin: 0;
   color: #000;
@@ -104,10 +104,6 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.list-row:hover {
-  background-color: rgba(0, 0, 0, 1); /* 輕微的懸停反饋 */
-  color: #dbdbdb;
-}
 
 /* 左側文字細節 */
 .text-group {

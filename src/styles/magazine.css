@@ -493,18 +493,6 @@ a:hover {
   border-color: #111111;
 }
 
-.scroll-content h1{
-  font-size: 2rem !important;
-}
-
-.scroll-content h2{
-  font-size: 1.5rem !important;
-}
-
-.scroll-content h3{
-  font-size: 1rem !important;
-}
-
 /* 7. Vue Transition 動畫特效 */
 .fade-enter-active,
 .fade-leave-active {
@@ -525,6 +513,18 @@ a:hover {
   max-height: 60vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+.scrollable-description h1 {
+  font-size: 2rem !important;
+}
+
+.scrollable-description h2 {
+  font-size: 1.5rem !important;
+}
+
+.scrollable-description h3 {
+  font-size: 1rem !important; /* 👈 從第一幀開始就是 1rem，絕對不閃爍 */
 }
 
 /* =========================================================================
