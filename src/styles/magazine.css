@@ -478,7 +478,7 @@ h3 {
   margin-top: 3rem;
 }
 
-a {
+.social-links a {
   color: #666666;
   text-decoration: none;
   font-size: 1rem;
@@ -488,7 +488,7 @@ a {
   padding-bottom: 4px;
 }
 
-a:hover {
+.social-links a:hover {
   color: #111111;
   border-color: #111111;
 }

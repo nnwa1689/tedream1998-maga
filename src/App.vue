@@ -2,7 +2,6 @@
 <template>
   <div class="app-stage">
     <RouterView v-slot="{ Component, route }">
-      <!-- 🌟 重新啟用 mode="out-in"，確保產生「中間轉折」的時間差 -->
       <transition :name="getTransitionName(route)" mode="out-in">
         <component :is="Component" :key="route.path" />
       </transition>
