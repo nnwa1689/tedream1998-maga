@@ -96,7 +96,7 @@
 }
 
 .giant-title {
-  font-size: 13.5vw; /* 隨視窗縮放的巨型字體 */
+  font-size: 12vw; /* 隨視窗縮放的巨型字體 */
   font-weight: 900;
   letter-spacing: 0rem;
   line-height: 0.85;

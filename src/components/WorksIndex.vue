@@ -4,19 +4,17 @@
     <header class="editorial-header">
       <p class="header-intro">ENJOY FREEDOM</p>
       <nav class="header-nav">
-        <!-- 🎯 點擊返回首頁照片展覽區 -->
         <router-link to="/" class="header-about">PHOTOS</router-link>
       </nav>
     </header>
 
-    <!-- 巨大頁面標題（強調程式與開發） -->
+    <!-- 巨大頁面標題 -->
     <section class="brand-hero">
       <h1 class="giant-title">DEVELOPMENT</h1>
     </section>
 
     <!-- 狀態標籤橫條列 -->
     <div class="status-bar">
-      <!-- 🎯 調整為程式作品專屬標示 -->
       <span class="bar-left">WORKS</span>
       <span class="bar-right">SOFTWARE / PROJECTS</span>
     </div>
@@ -41,7 +39,6 @@
         <div class="text-group">
           <span class="item-info">#{{ work.workId }}</span>
           <h2 class="item-title" v-html="work.title"></h2>
-          <!-- 程式專案簡介 -->
           <p v-if="work.desc" class="item-desc" v-html="work.desc"></p>
         </div>
 
@@ -75,11 +72,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { fetchWorksList, type WorkItem } from '@/data/worksData'
 import { useSelectIndex } from '@/hooks/useSelectIndex'
-const { setupSmoothScroll } = useSelectIndex()
 import '@/styles/SelectIndex.css'
+
+const { setupSmoothScroll } = useSelectIndex()
 
 const worksList = ref<WorkItem[]>([])
 const loading = ref(true)
@@ -118,11 +116,15 @@ const handleMouseLeave = () => {
 }
 
 onMounted(async () => {
-  setupSmoothScroll()
   try {
     worksList.value = await fetchWorksList()
   } finally {
     loading.value = false
+    
+    // 🌟 等待 DOM 完全渲染後啟動緩動與觸發尺寸重算
+    await nextTick()
+    setupSmoothScroll()
+    window.dispatchEvent(new Event('resize'))
   }
 })
 </script>
