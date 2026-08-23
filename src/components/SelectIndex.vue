@@ -2,7 +2,7 @@
   <div class="select-index-container">
     <!-- 頂部文藝小引言與 Works 頁面導覽 -->
     <header class="editorial-header">
-      <p class="header-intro">ENJOY FREEDOM</p>
+      <p class="header-intro">一期一會！</p>
       <nav class="header-nav">
         <!-- 🎯 點擊前往程式開發作品頁 -->
         <router-link to="/development" class="header-about">DEVELOPMENT</router-link>
@@ -17,7 +17,7 @@
     <!-- 狀態標籤橫條列 -->
     <div class="status-bar">
       <!-- 🎯 調整為照片/雜誌專屬標示 -->
-      <span class="bar-left">PHOTOS & VOL.</span>
+      <span class="bar-left">VOL.</span>
       <span class="bar-right">PHOTOGRAPHY</span>
     </div>
 

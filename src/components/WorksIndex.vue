@@ -2,7 +2,7 @@
   <div class="select-index-container">
     <!-- 頂部文藝導覽列 -->
     <header class="editorial-header">
-      <p class="header-intro">ENJOY FREEDOM</p>
+      <p class="header-intro">一期一會！</p>
       <nav class="header-nav">
         <router-link to="/" class="header-about">PHOTOS</router-link>
       </nav>

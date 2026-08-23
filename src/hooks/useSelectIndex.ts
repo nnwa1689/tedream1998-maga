@@ -27,7 +27,7 @@ export function useSelectIndex() {
     try {
       loading.value = true
       // 🌟 務必在 fields 加上 id
-      const response = await fetch('https://teddream.tw/cms/items/VolCover?fields=vol_id,title,info,image,subtitle')
+      const response = await fetch('https://teddream.tw/cms/items/VolCover?fields=vol_id,title,info,image,subtitle&sort=-vol_id')
       if (!response.ok) throw new Error(`HTTP 錯誤！狀態碼: ${response.status}`)
       
       const json: DirectusResponse = await response.json()
