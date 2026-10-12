@@ -30,6 +30,7 @@ const getTransitionName = (route: any): string => {
   position: relative;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background-color: #dbdbdb !important; /* 🌟 這樣中間過場真空期露出來的就會是 dbdbdb 灰！ */
 }
 

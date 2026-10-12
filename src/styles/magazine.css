@@ -55,6 +55,7 @@ h3 {
   position: relative;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background-color: #dbdbdb;
   color: #111111;
   overflow: hidden;
@@ -132,18 +133,23 @@ h3 {
   transition: color 0.3s, transform 0.2s;
   padding: 0.5rem;
   font-family: 'NotoSansTC';
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation; /* 取消雙擊縮放造成的點擊延遲 */
 }
 
-.nav-btn:hover {
-  transform: translateX(-3px);
-}
+/* 只在有滑鼠的裝置上啟用 hover，避免平板點擊後位移效果卡住 */
+@media (hover: hover) {
+  .nav-btn:hover {
+    transform: translateX(-3px);
+  }
 
-.prev-btn:hover {
-  transform: translateX(-3px);
-}
+  .prev-btn:hover {
+    transform: translateX(-3px);
+  }
 
-.next-btn:hover {
-  transform: translateX(3px);
+  .next-btn:hover {
+    transform: translateX(3px);
+  }
 }
 
 /* 3. P1 封面樣式 */
@@ -151,6 +157,7 @@ h3 {
   position: relative;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -160,6 +167,7 @@ h3 {
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -582,6 +590,7 @@ h3 {
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background-color: #dbdbdb;
   display: flex;
   flex-direction: column;
@@ -656,6 +665,7 @@ h3 {
     justify-content: flex-start;
     padding: 6rem 2rem 5rem 2rem;
     height: 100vh;
+    height: 100dvh;
     gap: 1.5rem;
   }
   .toc-left h2 {
@@ -685,6 +695,7 @@ h3 {
     justify-content: flex-start;
     padding: 6rem 2rem 5rem 2rem;
     height: 100vh;
+    height: 100dvh;
     gap: 1.5rem;
   }
   .gallery-text {
@@ -729,6 +740,7 @@ h3 {
     padding: 6rem 2rem 5rem 2rem;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
   }
   
   /* 徹底粉碎桌機 Grid 殘留，強制切換成乾淨的直向 Flex 排序 */
@@ -794,6 +806,11 @@ h3 {
 
   .nav-btn {
     font-size: 1.25rem;
+    min-width: 44px;  /* iOS 建議的最小點擊範圍 */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
  }
 
  

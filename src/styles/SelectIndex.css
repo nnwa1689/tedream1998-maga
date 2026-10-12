@@ -117,7 +117,6 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 2rem;
 }
 
 /* 核心列表樣式（強烈線條感） */
@@ -135,7 +134,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 1rem 0;
+  padding: 2rem 0;
   border-bottom: 1px solid #000;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;

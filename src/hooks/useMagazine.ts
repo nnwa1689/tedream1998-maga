@@ -257,16 +257,29 @@ export function useMagazine() {
         }
     }
 
+    let isTouchTracking = false
+
     const handleTouchStart = (e: TouchEvent): void => {
+        isTouchTracking = false
         if (document.querySelector('.pswp--open')) return
-        touchStartX = e.touches?.[0]?.clientX ?? 0
-        touchStartY = e.touches?.[0]?.clientY ?? 0
+        // 點在按鈕／連結上時交給 click 處理；目錄清單與內文捲動區的觸控留給區塊自己捲動，都不當作換頁滑動
+        if ((e.target as HTMLElement | null)?.closest('button, a, .toc-list, .scrollable-description')) return
+        const touch = e.touches[0]
+        if (!touch) return
+        touchStartX = touch.clientX
+        touchStartY = touch.clientY
+        isTouchTracking = true
     }
 
     const handleTouchEnd = (e: TouchEvent): void => {
+        if (!isTouchTracking) return
+        isTouchTracking = false
         if (document.querySelector('.pswp--open')) return
-        const deltaX = e.changedTouches[0]?.clientX ?? 0 - touchStartX
-        const deltaY = e.changedTouches[0]?.clientY ?? 0 - touchStartY
+        const touch = e.changedTouches[0]
+        if (!touch) return
+        // ⚠️ 必須先取值再相減；`a ?? 0 - b` 會被解析成 `a ?? (0 - b)`
+        const deltaX = touch.clientX - touchStartX
+        const deltaY = touch.clientY - touchStartY
         if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
             triggerPageChange(deltaX < 0 ? 'next' : 'prev')
         }
@@ -305,7 +318,7 @@ export function useMagazine() {
                 const data = ctx.getImageData(0, 0, 75, 60).data
                 let totalLuminance = 0, validPixelCount = 0
                 for (let i = 0; i < data.length; i += 4) {
-                    if (data?.[i + 3] ?? 0 > 50) {
+                    if ((data[i + 3] ?? 0) > 50) {
                         totalLuminance += (0.299 * (data?.[i] ?? 0) + 0.587 * (data?.[i + 1] ?? 0) + 0.114 * (data?.[i + 2] ?? 0))
                         validPixelCount++
                     }
